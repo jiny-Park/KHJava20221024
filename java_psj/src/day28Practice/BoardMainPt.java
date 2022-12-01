@@ -25,7 +25,7 @@ public class BoardMainPt {
 		
 		loadMember("memberPt.txt");
 		loadCategory("categoryPt.txt");
-		
+		 
 		do {
 			printMenu();
 			menu = scan.nextInt();
