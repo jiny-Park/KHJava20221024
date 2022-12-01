@@ -1,0 +1,22 @@
+package day12;
+
+public interface TvRemoteController{
+	// 전원 켜기
+//	void turnOn(); 
+	// 전원 끄기
+//	void turnOff();
+//	void turn(boolean power);
+	// 전원 켜기/끄기
+	void turn();
+	
+	// 채널 변경(숫자)
+	void channel(int channel);
+	// 채널 업
+	void channelUp();
+	// 채널 다운
+	void channelDown();
+	// 음량 업
+	void volumnUp();
+	// 음량 다운
+	void volumnDown();
+}
