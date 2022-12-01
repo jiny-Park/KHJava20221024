@@ -1,0 +1,45 @@
+
+피드백!!!!!!
+
+스프링 프레임워크를 통한 웹 프로젝트!
+
+◆스프링을 이용한 홈페이지 만들기
+-스프링을 쓰는 이유는 전자정부프레임워크라고 해서 표준화를 만들었기 때문에.
+-스프링을 배우면 mvc 모델을 통해 구분이 되어 있음.
+-MVC란?
+
+◆프론트엔드
+- 화면 구성
+- HTML, CSS, JS 
+
+
+◆백엔드 
+- 화면에 뿌려줄 데이터를 선정
+- 데이터를 처리
+- 자바(스프링을 사용하기 위한 언어)
+- SQL 중에 MySQL을 배울 것
+-
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+◆github.com 회원 가입 및 이메일 인증
+- 개발자들이 자신의 코드를 온라인 상에 올려서 공유하거나 개인이 유지, 관리하기 위한 프로그램
+- 깃크라켄(명령어를 사용하여 해야되는 것을 깃크라켄 프로그램을 통해 관리 가능)
+- git 매우 아주 잘 많이 활용하기!!!
+- Add .gitignore 
+- 깃크라켄 토큰(?)
+eJwtjMtuwjAQRf/F6yyahATwHhWQKhDt3pqMJ8GKE7vjvCji32uhrO7Vkc55CkCkEH5cS72QAqDAtNoU1ccW02y3L+Pgvqx1ipuaMp1nVGMOhUiEZzcZTbyqz7WkhjXV3J3Cz/JvOYTuAJfd7Xj6On9n+ne59vZ8GXKdFvo+bWPqrajh4Sl6FQETRxrQvQHozvTSj5U1qFp6JEygpeMmHu+SMRBL6sDYZHbc1tbNUabFG6agYBCyH619vf4B15pQzg==
+
+◆java 설치 확인
+- cmd에서 'java -version', 'javac -version' 
+
+◆Eclipase 설치
+- 최신버전은 스프링에 반영이 안 될 확률이 있으므로, 'Eclipse IDE 2021-03 R Packages'로 설치 요망
+(Enterprise Java and Web으로)
+
+◆Java
+- 
+
+◆오늘 집에가서 할 일
+1. 깃크라켄 설치
+2. flie Pull 해서 Eclipse에서 project 열기(File -> open projectss from System... -> Directory... -> java_psj 선택)
+3. project open 이후에 실행이 잘 되는지 확인 
