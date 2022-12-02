@@ -12,6 +12,7 @@ import lombok.Data;
 public class Comment {
 	private int num;
 	private String contents, writer;
+	private int boardNum;
 	
 	public int getNum() {
 		return num;
@@ -32,15 +33,39 @@ public class Comment {
 		this.writer = writer;
 	}
 	
-	public Comment(int num, String contents, String writer) {
+	public Comment(int num, String contents, String writer, int boardNum) {
 		this.num = num;
 		this.contents = contents;
 		this.writer = writer;
+		this.boardNum = boardNum;
 	}
 	
 	@Override
 	public String toString() {
-		return num + "| " + contents + "[" + writer + "]";
+		return num + "| " + contents + " [" + writer + "]";
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Comment other = (Comment) obj;
+		if (num != other.num)
+			return false;
+		return true;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + num;
+		return result;
+	}
+	
+	
 
 }

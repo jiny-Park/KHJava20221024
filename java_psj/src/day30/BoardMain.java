@@ -228,14 +228,15 @@ public class BoardMain {
 	 * 					 우선은 서브 메뉴를 선택하면 선택한 서브 메뉴를 
 	 * 					 콘솔에 출력하는 기능으로 일단 구현
 	 * @param submenu 선택한 서브 메뉴
+	 * @param boardNum 선택한 게시글 번호
 	 */
-	private static void runPrintSubmenu(int submenu) {
+	private static void runPrintSubmenu(int submenu, int boardNum) {
 		switch(submenu) {
 		case 1:
-			System.out.println("댓글 등록 예정");
+			insertCommentList(boardNum);
 			break;
 		case 2:
-			System.out.println("댓글 확인 예정");
+			printCommentList(boardNum);
 			break;
 		case 3:
 			printStr("이전으로 돌아갑니다!");
@@ -263,7 +264,7 @@ public class BoardMain {
 			printSubmenu();
 			submenu = scan.nextInt();
 			scan.nextLine();
-			runPrintSubmenu(submenu);
+			runPrintSubmenu(submenu, num);
 		}while(submenu != 3);		
 	}
 	
@@ -273,25 +274,52 @@ public class BoardMain {
 	 * @return 댓글 추가 여부
 	 */
 	private static boolean insertComment(List<Comment> commentList, Comment comment) {
-		System.out.print("댓글 번호 : ");
-		int num = scan.nextInt();
-		scan.nextLine();
-		System.out.print("내 용 : ");
-		String contents = scan.nextLine();
-		System.out.print("작성자 : ");
-		String writer = scan.nextLine();
-		
-		return new Comment(num, contents, writer);
+		// 댓글이 있는지 확인
+		int index = commentList.indexOf(comment);
+		if(index != -1) {
+			return false;
+		}
+		commentList.add(comment);
+		return true;
 	}
 	
 	/** insertCommentList : 댓글 정보를 입력받아 댓글을 추가하는 메소드
-	 * 
+	 * @param boardNum 선택한 게시글 번호
 	 */
-	private static void insertCommentList() {
-		commentList.add(insertComment);
+	private static void insertCommentList(int boardNum) {
+		int num = inputBoardNum();
+		System.out.print("작성자 : ");
+		String writer = scan.nextLine();
+		System.out.print("내 용 : ");
+		String contents = scan.nextLine();
+		
+		Comment comment = new Comment(num, contents, writer, boardNum);
+		
+		if(insertComment(commentList, comment)) {
+			printStr("댓글 등록이 완료 됐습니다!");
+		}else {
+			printStr("이미 등록된 댓글 번호입니다!");
+		}
 	}
 	
-	
+	/** printCommentList : 선택한 게시글에 있는 댓글들을 확인하는 메소드
+	 * @param boardNum 게시글 번호
+	 */
+	private static void printCommentList(int boardNum) {
+		if(commentList.size() == 0) {
+			printStr("등록된 댓글이 없습니다!");
+			return;
+		}
+		int count = 0; // 댓글은 있지만 해당 게시글자체가 없을 수도 있기 때문에.
+		commentList.forEach(c->{
+			if(c.getBoardNum() == boardNum) {
+				System.out.println(c);
+//				count++;
+			}
+		});
+		
+		
+	}
 	
 	
 	
