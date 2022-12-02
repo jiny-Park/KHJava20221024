@@ -82,6 +82,8 @@ public class Board {
 		this.contents = contents;
 		this.writer = writer;
 	}
+	
+	
 
 	public Board(int number) {
 		this.num = number;
