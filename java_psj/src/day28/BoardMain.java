@@ -42,7 +42,7 @@ public class BoardMain {
 	 */
 	private static Scanner scan = new Scanner(System.in);
 	private static List<Member> memberList 	  = new ArrayList<Member>();
-	private static List<Board> boardList 	  = new ArrayList<Board>();
+	private static List<Board>  boardList 	  = new ArrayList<Board>();
 	private static List<String> categoryList  = new ArrayList<String>();
 			//Arrays.asList("공지", "자유")는 고정되기 때문에, 새로운 객체를 생성할 수 있도록 new ArrayList<String> 추가한다.
 	private static Member user = null;	// user 참조변수는 왜 사용하고 있는지?

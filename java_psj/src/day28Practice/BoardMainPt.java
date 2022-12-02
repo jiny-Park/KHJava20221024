@@ -25,6 +25,7 @@ public class BoardMainPt {
 		int menu = -1;
 		
 		loadMember("memberPt.txt");
+		loadBoard("BoardPt.txt");
 		loadCategory("categoryPt.txt");
 		 
 		do {
@@ -32,12 +33,14 @@ public class BoardMainPt {
 			menu = scan.nextInt();
 			scan.nextLine();
 			printBar();
-			runMenu(menu);
-				
+			runMenu(menu);				
 		}while(menu != 4);
+		
 		saveMember("memberPt.txt");
+		saveBoard("BoardPt.txt");
 		saveCategory("CategoryPt.txt");
 	}
+
 
 	private static void loadMember(String filename) {
 		try (ObjectInputStream ois 
@@ -69,6 +72,35 @@ public class BoardMainPt {
 		}	
 	}
 	
+	private static void loadBoard(String filename) {
+		try (ObjectInputStream ois 
+				= new ObjectInputStream(new FileInputStream(filename))){
+			while(true) {
+				BoardPt board = (BoardPt)ois.readObject();
+				boardList.add(board);
+			}
+		} catch (ClassNotFoundException e) {
+			printStr("불러오기 실패");
+		} catch (EOFException e) {
+			printStr("불러오기 성공");
+		} catch (IOException e) {
+			printStr("불러오기 실패");
+		}		
+	}
+
+	private static void saveBoard(String filename) {
+		try (ObjectOutputStream oos 
+				= new ObjectOutputStream(new FileOutputStream(filename))){
+			for(BoardPt board : boardList) {
+				oos.writeObject(board);
+			}
+			System.out.println("파일 저장 완료");
+		} catch (IOException e) {
+			printStr("불러오기 실패");
+			e.printStackTrace();
+		}		
+	}
+	
 	private static void loadCategory(String filename) {
 		try (ObjectInputStream ois 
 				= new ObjectInputStream(new FileInputStream(filename))){
@@ -84,8 +116,7 @@ public class BoardMainPt {
 			printStr("불러오기 성공");
 		} catch (IOException e) {
 			printStr("불러오기 실패");
-		}	
-		
+		}			
 	}
 	
 	private static void saveCategory(String filename) {
@@ -97,17 +128,63 @@ public class BoardMainPt {
 			System.out.println("파일 저장 완료");
 		} catch (IOException e) {
 			printStr("불러오기 실패");
-		}	
-		
+		}			
 	}
 
 	private static void printStr(String str) {
 		System.out.println(str);
-		pirntBar();
+		printBar();
 	}
 
-	private static void pirntBar() {
+	private static void printBar() {
 		System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");	
 	}
 
+	private static void printMenu() {
+		System.out.println(" *메 뉴* ");
+		System.out.println("1. 회원 관리");
+		System.out.println("2. 게시글 관리");
+		System.out.println("3. 카테고리 관리");
+		System.out.println("4. 프로그램 종료");
+		printBar();
+		System.out.print("메뉴선택 : ");
+	}
+	
+	private static void runMenu(int menu) {
+		switch(menu) {
+		case 1: memberMenu(); break;
+		case 2: boardMenu();	break;
+		case 3: categoryMenu(); break;
+		case 4: printStr("프로그램 종료"); break;
+		default: 
+			throw new RuntimeException("잘못된 메뉴 선택");
+		}
+	}
+
+	private static void memberMenu() {
+		if(checkLogin(true))
+			return;
+		int subMenu = -1;
+		do {
+			printSubmenu(1);
+			subMenu = scan.nextInt();
+			scan.nextLine();
+			subMenu = runMemberMenu(subMenu);		
+		}while(subMenu != 3);	
+	}
+
+	private static boolean checkLogin(boolean res) {
+		if(user != null && res) {
+			printStr("로그인한 사용자는 해당 기능을 이용할 수 없음");
+			return res;
+		}
+		if(user == null && !res) {
+			printStr("로그인 하지 않은 사용자는 해당 기능을 이용할 수 없음");
+			return !res;
+		}
+		return false;
+	}
+
+	
+	
 }
