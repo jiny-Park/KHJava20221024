@@ -45,7 +45,7 @@ public class BoardMain {
 	private static List<Board> boardList 	  = new ArrayList<Board>();
 	private static List<String> categoryList  = new ArrayList<String>();
 			//Arrays.asList("공지", "자유")는 고정되기 때문에, 새로운 객체를 생성할 수 있도록 new ArrayList<String> 추가한다.
-	private static Member user = null;
+	private static Member user = null;	// user 참조변수는 왜 사용하고 있는지?
 	
 	public static void main(String[] args) {
 		int menu = -1;
@@ -291,7 +291,7 @@ public class BoardMain {
 		if(member == null) // 조건문의 실행문이 1개일시 {} 생략 가능
 			return false;
 		if(memberList == null) 
-			memberList = new ArrayList<Member>();
+			memberList = new ArrayList<Member>();	// 요 부분 어떻게 진행이 되는건지 궁금함?
 		if(memberList.size() == 0) 
 			return false;
 		for(Member tmp : memberList) {	// 비교하는 이 부분을 잘 이해하자!
@@ -319,7 +319,7 @@ public class BoardMain {
 	}
 	
 	private static void login() {
-		Member member = null;
+		Member member = null;	// 무엇을 체크??
 		// 회원 정보 입력(id, pw)
 		System.out.println("로그인 정보 입력");
 		member = inputMember();
