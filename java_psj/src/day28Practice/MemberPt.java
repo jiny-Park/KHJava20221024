@@ -43,7 +43,7 @@ public class MemberPt implements Serializable {
 		return result;
 	}
 	
-	public MemberPt(String id, String pw, Date joinDate, Authority authority) {
+	public MemberPt(String id, String pw, Authority authority) {
 		this.id = id;
 		this.pw = pw;
 		this.authority = authority;
@@ -51,9 +51,7 @@ public class MemberPt implements Serializable {
 	}
 	
 	public MemberPt(String id, String pw) {
-		super();
-		this.id = id;
-		this.pw = pw;
+		this(id, pw, Authority.MEMBER);
 	}
 
 }

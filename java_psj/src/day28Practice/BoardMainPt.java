@@ -161,6 +161,35 @@ public class BoardMainPt {
 		}
 	}
 
+	private static void printSubmenu(int menu) {
+		switch(menu) {
+		case 1:
+			System.out.println("*회원 관리 메뉴*");
+			System.out.println("1. 회원 가입");
+			System.out.println("2. 로그인");
+			System.out.println("3. 이전");
+			break;
+		case 2:
+			System.out.println("*게시글 관리 메뉴*");
+			System.out.println("1. 게시글 등록");
+			System.out.println("2. 게시글 수정");
+			System.out.println("3. 게시글 삭제");
+			System.out.println("4. 게시글 목록");
+			System.out.println("5. 이전");
+			break;
+		case 3:
+			System.out.println("*카테고리 관리 메뉴*");
+			System.out.println("1. 카테고리 등록");
+			System.out.println("2. 카테고리 수정");
+			System.out.println("3. 카테고리 삭제");
+			System.out.println("4. 카테고리 목록");
+			System.out.println("5. 이전");
+			break;
+		}
+		printBar();
+		System.out.print("메뉴 선택 : ");	
+	}
+
 	private static void memberMenu() {
 		if(checkLogin(true))
 			return;
@@ -185,6 +214,138 @@ public class BoardMainPt {
 		return false;
 	}
 
+	private static int runMemberMenu(int subMenu) {
+		switch(subMenu) {
+		case 1:
+			signup();
+			break;
+		case 2:
+			login();
+			if(user != null)
+				return 3;
+			break;
+		case 3:
+			printStr("이전 메뉴로 돌아갑니다!");
+		default:
+			printStr("잘못된 메뉴 선택");
+		}
+		return subMenu;	
+	}
+
+	private static void signup() {
+		MemberPt member = null;
+		System.out.println("회원 정보 입");
+		member = inputMember();
+		
+		if(isMember(member)) {
+			printStr("이미 가입된 ID입니다!");
+			return;
+		}
+		memberList.add(member);
+		printStr("회원 가입이 완료 되었습니다!");	
+	}
+
+	private static MemberPt inputMember() {
+		System.out.print("아이디 : ");
+		String id = scan.nextLine();
+		System.out.print("비밀번호 : ");
+		String pw = scan.nextLine();
+		Authority authority = memberList.size() == 0 ? Authority.ADMIN : Authority.MEMBER;
+		return new MemberPt(id, pw, authority);
+	}
+
+	private static boolean isMember(MemberPt member) {
+		if(member == null)
+			return false;
+		if(memberList == null)
+			memberList = new ArrayList<MemberPt>();
+		if(memberList.size() == 0)
+			return false;
+		for(MemberPt tmp : memberList) {
+			if(tmp.getId().equals(member.getId()))
+				return true;
+		}
+		return false;
+	}
+
+	private static void login() {
+		MemberPt member = null;
+		System.out.println("로그인 정보 입력");
+		member = inputMember();
+		
+		int index = memberList.indexOf(member);
+		if(index == -1) {
+			printStr("로그인 실패");
+			return;
+		}
+		user = memberList.get(index);
+		printStr("로그인 성공");		
+	}
+	
+	private static void boardMenu() {
+		int subMenu = -1;
+		do {
+			printSubmenu(2);
+			subMenu = scan.nextInt();
+			scan.nextLine();
+			printBar();
+			runBoardMenu(subMenu);
+		}while(subMenu != 5);	
+	}
+
+	private static void runBoardMenu(int subMenu) {
+		switch(subMenu) {
+		case 1:	 insertBoard();					   break;
+		case 2:  updateBoard();					   break;
+		case 3:  deleteBoard();					   break;
+		case 4:  printBoard();					   break;
+		case 5:  printStr("이전 메뉴로 돌아갑니다!");	   break;
+		default: printStr("잘못된 메뉴를 선택했습니다!"); break;
+		}
+		System.out.println(boardList);	
+	}
+
+
+	private static void insertBoard() {
+		if(checkLogin(false))
+			return;
+		printCategory();
+		printBar();
+		String category = null;
+		do {
+			if(category != null)
+				printStr("등록되지 않은 카테고리 입니다!");
+			System.out.println("카테고리 : ");
+			category = scan.nextLine();
+		}while(!categoryList.contains(category));
+		System.out.println("제목 : ");
+		String title = scan.nextLine();
+		System.out.println("내용 : ");
+		String contents = scan.nextLine();
+		printBar();
+		BoardPt board = new BoardPt(title, contents, user.getId(), category);
+		boardList.add(board);
+		printStr("게시글 등록 완료!");
+		
+	}
+
+
+	private static void updateBoard() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	private static void deleteBoard() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	private static void printBoard() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }
