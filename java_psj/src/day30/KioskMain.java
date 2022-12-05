@@ -120,7 +120,7 @@ public class KioskMain {
 	private static void runMenu(int menu) {
 		switch(menu) {
 		case 1:
-			insertProduct();
+//			insertProduct();
 			break;
 		case 2: 
 			System.out.println("제품 수정");
