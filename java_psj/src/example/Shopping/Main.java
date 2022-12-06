@@ -31,9 +31,13 @@ public class Main {
 	 *  진라면 10개 판매(날짜) => 진라면 수량 90개
 	 */
 
+	// 메인은 메인만 관리
 	static Scanner scan = new Scanner(System.in);
 	public static void main(String[] args) {
+		// 프로그램 객체를 만들고
 		ShoppingProgram shoppingProgram = new ShoppingProgram();
+		// 런이라는 메소드로 런만 실행하는 것. 윈도우라고 생각하면 됨. 더블 클릭하면 실행이 되는 것처럼. 운영체제라고 생각하면 됨. 
+		// 객체를 만들어서 런을 하는게 더블클릭해서 프로그램을 실행했다 생각하면 됨
 		shoppingProgram.run();
 	}	
 	

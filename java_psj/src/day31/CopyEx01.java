@@ -5,16 +5,17 @@ import lombok.Data;
 public class CopyEx01 {
 
 	public static void main(String[] args) {
-		// 얉은 복사
+		// 얉은 복사 : 
 		System.out.println("얉은 복사");
+		// 객체 생성
 		Test t1 = new Test(10, 20, "홍길동");
 		Test t2 = t1;
 		
 		System.out.println("t1 : " + t1);
 		System.out.println("t2 : " + t2);
 		
-		t1.setNum1(30);
-		t1.getSub().setName("임꺽정");
+		t1.setNum1(30); //t1.setNum1(30);으로 바꾸면 t1, t2 같이 바뀜. 얉은 복사는 객체를 새로 생성하는 것이 아니라 서로 주소를 공유하기 때문이다.
+		t1.getSub().setName("임꺽정"); // t1, t2 둘다 바뀜
 		System.out.println("t1 : " + t1);
 		System.out.println("t2 : " + t2);
 
@@ -24,12 +25,14 @@ public class CopyEx01 {
 		System.out.println("깊은 복사");
 		System.out.println("---------------------------------------");
 		Test t3 = new Test(10, 20, "홍길동");
-		Test t4 = new Test(t3);
+		Test t4 = new Test(t3); //	Test t4 = new Test(t3); t3의 값을 가져와서 t4에 객체에 저장
 		System.out.println("t3 : " + t3);
 		System.out.println("t4 : " + t4);
 		
-		t3.setNum1(30);
-		t3.getSub().setName("임꺽정");
+		t3.setNum1(30); // t3.setNum1(30); -> 깊은 복사는 t3만 바뀌고 t4는 바뀌지 않음. 그 이유는 아예 다른 객체로 생성이 따로 따로 됐기 때문이다.
+						// 깊은 복사에서 주의할점은 깊은 복사가 항상 이렇게 되지는 않다. 
+		// 생성자에 객체를 넘겨줘서 필드끼리 = 해서 하는 것은 항상 깊은 복사가 아니다. 
+		t3.getSub().setName("임꺽정"); 
 		System.out.println("t3 : " + t3);
 		System.out.println("t4 : " + t4);
 		System.out.println("---------------------------------------");
@@ -42,20 +45,23 @@ public class CopyEx01 {
 @Data
 class Test {
 	int num1, num2;
-	Sub sub;
+	Sub sub; // 클래스의 객체가 오는 경우, 
 	
 	public Test(int num1, int num2, String name) {
 		this.num1 = num1;
 		this.num2 = num2;
+		// 참조변수도 = 을 하면 공유하게 되는 것
 		this.sub = new Sub(name);
 	}
 	
 	public Test(Test t) {
 		this.num1 = t.num1;
 		this.num2 = t.num2;
+		// 생성자에 객체를 넘겨줘서 필드끼리 = 해서 하는 것은 항상 깊은 복사가 아니다. 
 		// 깊은 복사를 하려면 필드가 참조변수인 경우, 생성자를 이용하여 복사해야함
-		this.sub = new Sub(t.sub.getName());
-		// this.sub = new Sub(t.sub);
+		// 일반 자료형은 필드 = 필드 해도 되고 스트링도 가능한데 이유는 스트링은 스트링이 바뀌면 새로운 객체를 연결하기 때문에. 그 외에 다른 객체는 안 됨. 
+		this.sub = new Sub(t.sub.getName()); // or  this.sub = new Sub(t.sub); 이렇게 써줘야함. 중요한 것은 새로운 객체를 만들어서 넘겨줘야 하는 것!
+		// 
 	}
 }
 
