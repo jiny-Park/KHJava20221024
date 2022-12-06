@@ -13,7 +13,7 @@ public class FileStreamEx01 {
 		FileInputStream fis = null;
 		
 		try {
-			fos = new FileOutputStream("test.txt");
+			fos = new FileOutputStream("test.txt"); //("test.txt", true); -> 이어쓰기 : , true를 넣어주면 됨.
 			
 //			char ch = '나';	// -> \로 나오는 이유는? write는 1byte 변환하기 때문에, 데이터손실이 되어 우리가 원하지 않는 글자가 나오기도 함.
 //			fos.write(ch);
