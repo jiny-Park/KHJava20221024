@@ -11,11 +11,12 @@ public class ProductController {
 	// 필드로 ProductList를 추가해줌
 	private List<Product> productList;
 	
-	// 생성자 추가
+	// 생성자 추가 : 필드를 초기화 하는 곳. 리턴 타입이 없음(void 아님). 생성자 이름은 클래스명과 동일
 	public ProductController(List<Product> prductList) {
 		this.productList = prductList;
 	}
 
+	//메소드 : 클래스에서 실행하는 기능들(Ex)리모컨 클래스는 전원을 켜기/기능이 있다.)
 	public void insertProduct() {
 		// 새 제품 정보를 입력
 		// 수정 메소드, 삭제 메소드에서도 쓸 수 있도록, 서비스에 만듬. 
@@ -42,7 +43,7 @@ public class ProductController {
 													 // 정보를 productList에서 찾아와서 index에 저장
 		// 제품 정보 수정
 		if(ps.updateProduct(productList, index, newProduct)) { // 
-		// 	Product newProduct = ps.inputProduct();	코드의 정보를 받아서 updateProduct로 가게 됨. 
+		// Product newProduct = ps.inputProduct();	코드의 정보를 받아서 updateProduct로 가게 됨. 
 		// updateProduct로 가고 ProductService선언부를 거쳐 ProductServiceImp로 가서 기능을 구현(실행)
 			System.out.println("제품 정보 수정 완료");
 		}else {
@@ -67,10 +68,5 @@ public class ProductController {
 			System.out.println("제품 삭제 실패");
 		}
 	}
-
-	
-	
-	
-	
 		
 }

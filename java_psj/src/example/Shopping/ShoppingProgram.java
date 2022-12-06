@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ShoppingProgram {
+	// 이해를 하고 적용하는 것이 중요하다!
 	// 객체지향이라고 해서 꼭 복잡하게 만드는 것이 객체지향이 아니라 무조건 나누는 것이 답이 아니고 
 	// 필요에 의해서 나누어 구조를 짜는 것이 중요하다.
 	// 스프링이 이렇게 컨트롤러 서비스 위주로 동작을 하며 작업을 한다. 
@@ -15,7 +16,7 @@ public class ShoppingProgram {
 	private List<Product> productList = new ArrayList<Product>();// 제품 리스트
 	private List<Sales> salesList 	  = new ArrayList<Sales>();	// 매출액 리스트
 	// 컨트롤러 호출하기 위해 컨트롤러 객체 생성.							// ProductController의 매개변수로 productList를 추가
-																// 이유는 제품관리는 ProductController가 하기 때문에 연결을 시켜 놓은 것
+	// 객체 생성 : 클래스명 객체명 = new 생성자();															// 이유는 제품관리는 ProductController가 하기 때문에 연결을 시켜 놓은 것
 	private ProductController pc 	  = new ProductController(productList);
 	// 컨트롤러 호출하기 위해 컨트롤러 객체 생성. 
 	private SalesController sc 		  = new SalesController(salesList, productList);//(salesList, productList) 매개변수 추가 
@@ -63,6 +64,7 @@ public class ShoppingProgram {
 			pc.insertProduct();
 			break;
 		case 2:
+			// 객체에서 메소드 호출 : 객체명.메소드명(매개변수들);
 			pc.updateProduct();
 			break;
 		case 3:
