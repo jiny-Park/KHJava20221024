@@ -33,7 +33,7 @@ public class FileStreamEx02 {
 			e.printStackTrace();
 		}
 		
-		
+
 
 	}
 
