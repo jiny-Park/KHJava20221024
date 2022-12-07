@@ -325,13 +325,35 @@ public class BoardMainPt {
 		printBar();
 		BoardPt board = new BoardPt(title, contents, user.getId(), category);
 		boardList.add(board);
-		printStr("게시글 등록 완료!");
-		
+		printStr("게시글 등록 완료!");	
 	}
 
-
 	private static void updateBoard() {
-		// TODO Auto-generated method stub
+		if(checkLogin(false))
+			return;
+		System.out.print("게시글 번호 : ");
+		int num = scan.nextInt();
+		scan.nextLine();
+		
+		int index = boardList.indexOf(new BoardPt(num));
+		if(index == -1) {
+			printStr("등록되지 않거나 삭제된 게시글");
+			return;
+		}
+		BoardPt board = boardList.get(index);
+		if(!board.getWriter().equals(user.getId())) {
+			printStr("작성자가 아닌 사용자는 수정 불가능");
+			return;
+		}
+		
+		System.out.print("제목 : ");
+		String title = scan.nextLine();
+		System.out.print("내용 : ");
+		String contents = scan.nextLine();
+		printBar();
+		
+		board.update(title, contents);
+		printStr("게시글 수정 완료!");
 		
 	}
 
@@ -348,4 +370,20 @@ public class BoardMainPt {
 	}
 	
 	
+	private static void printCategory() {
+		if(categoryList.size() == 0) {
+			printStr("등록된 카테고리 없음");
+			return;
+		}
+		for(int i = 0; i < categoryList.size(); i++) {
+			System.out.println(i+1 + ". " + categoryList.get(i));
+		}
+		printBar();
+	}
+
+
+
+
+
+
 }
