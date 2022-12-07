@@ -21,9 +21,10 @@ public class MathEx01 {
 		System.out.println(pi4);
 		
 		// 소수점 넷째자리에서 반올림
-		int num = 4; //-> 내가 원하는 위치의 자릿수를 반올림 할 수 있다.  3이면 3번째 자리.
+		int num = 2; //-> 내가 원하는 위치의 자릿수를 반올림 할 수 있다.  3이면 3번째 자리.
 		double pi4_2 = Math.round(pi * Math.pow(10, num-1)) / Math.pow(10, num-1); 
 		System.out.println(pi4_2);
+		System.out.println(Math.pow(10, num));
 		
 	}
 
