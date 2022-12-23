@@ -171,32 +171,5 @@ class Student1 {
 		this.st_state = st_state;
 		this.st_pr_num = st_pr_num;
 	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Student1 other = (Student1) obj;
-		if (st_num == null) {
-			if (other.st_num != null)
-				return false;
-		} else if (!st_num.equals(other.st_num))
-			return false;
-		return true;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((st_num == null) ? 0 : st_num.hashCode());
-		return result;
-	}
-	
-	
 	
 }
