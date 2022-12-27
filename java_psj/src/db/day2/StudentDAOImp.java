@@ -105,7 +105,6 @@ public class StudentDAOImp implements StudentDAO{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return true;
 	}
 
@@ -129,13 +128,6 @@ public class StudentDAOImp implements StudentDAO{
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
+
 
 }
