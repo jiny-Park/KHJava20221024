@@ -22,14 +22,16 @@ public class MybatisMain {
 			inputStream = Resources.getResourceAsStream(resource);
 			SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 			try (SqlSession session = sqlSessionFactory.openSession()) {
-				 StudentDAO studentDAO = session.getMapper(StudentDAO.class);
-				 ArrayList<StudentDAO> list = studentDAO.selectAllStudent();
+				 StudentDAO studentDao = session.getMapper(StudentDAO.class);
+				 ArrayList<StudentDAO> list = studentDao.selectAllStudent();
 				 System.out.println(list);
-				 //StudentVO std = new StudentVO("2022123002", "콩콩", 2, "재학", "2022160001");
-				 //studentDAO.insertStudent(std);
+//				 StudentVO std = new StudentVO("2022123002", "팝팝", 2, "휴학", "2022160001");
+//				 studentDao.insertStudent(std);
 				 
 				 CourseVO co = new CourseVO("2022123001", 1, "학점");
-				 studentDAO.insertStudent(co);
+				 //sysout(co.getCo_num());
+				 studentDao.insertCourse(co);
+				 System.out.println(co);
 				 
 				 session.commit();
 				
