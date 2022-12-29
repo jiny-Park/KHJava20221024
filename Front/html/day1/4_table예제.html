@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Table 예제</title>
+</head>
+<body>
+	<table border="2" bordercolor = "green">
+		<caption>과목별 성적</caption>
+		<colgroup>
+			<col style="background-color: cornsilk;">
+			<col style="background-color: rgb(133, 201, 203);">
+			<col style="background-color: rgb(223, 146, 146);">
+		</colgroup>
+		<thead>
+			<tr>
+				<th>과목.th태그는 굵은 글씨 가운데 정렬</th>
+				<th>이름</th>
+				<th>점수</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td rowspan="2">무술.td태그는 일반 글씨에 왼쪽 정렬</td>
+				<td>홍길동</td>
+				<td>100</td>
+			</tr>
+			<tr>
+				<td>이몽룡</td>
+				<td>100</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="2">평균</td>
+				<td>99</td>
+			</tr>
+		</tfoot>
+	</table>
+	<figure>
+		<figcaption>테이블 설명</figcaption>
+	</figure>
+	
+</body>
+</html>
