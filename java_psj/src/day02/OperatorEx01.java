@@ -11,6 +11,12 @@ public class OperatorEx01 {
 		int a = 10;
 		int b = ++a;
 		System.out.println(a +","+ b);
+		
+		a = 10;
+		System.out.println(a);
+		b = a++;
+		System.out.println(a +", "+ b);
+		
 	}
 
 }
